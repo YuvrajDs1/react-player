@@ -3,7 +3,6 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 
 import "videojs-contrib-quality-levels";
-import "videojs-http-source-selector";
 
 const VideoJS = ({ options, onReady }) => {
   const playerRef = useRef(null);
@@ -22,17 +21,17 @@ const VideoJS = ({ options, onReady }) => {
         onReady && onReady(player);
       });
 
-      console.log(player);
-
-      player.ready(() => {
-        if (typeof player.httpSourceSelector === "function") {
-          player.httpSourceSelector({ default: "auto" });
-        }
-      });
-
       playerRef.current = player;
     }
-  }, [options, onReady]);
+
+    // Cleanup on unmount
+    return () => {
+      if (playerRef.current && !playerRef.current.isDisposed()) {
+        playerRef.current.dispose();
+        playerRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div data-vjs-player>

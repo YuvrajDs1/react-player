@@ -6,8 +6,7 @@ const BasicVideoPlayer = () => {
       <h2>Basic HTML5 Video Player</h2>
 
       <video
-        src="https://ik.imagekit.io/roadsidecoder/yt/example.mp4"
-        // src="https://ik.imagekit.io/roadsidecoder/yt/example.mp4?tr=l-subtitles,i-yt/english.srt,l-end"
+        src="https://ik.imagekit.io/dlio4udcx/YT%20Video/Reel36.mp4"
         width="800"
         height="450"
         controls
